@@ -12,7 +12,7 @@ import org.mybatis.dynamic.sql.SqlBuilder.isEqualTo
 import org.mybatis.dynamic.sql.SqlBuilder.isGreaterThanOrEqualTo
 
 fun main() {
-    list5_4_20()
+    list5_4_21()
 }
 fun createSessionFactory(): SqlSessionFactory {
     val resource = "mybatis-config.xml"
@@ -133,6 +133,17 @@ fun list5_4_20() {
     createSessionFactory().openSession().use { session ->
         val mapper = session.getMapper(UserMapper::class.java)
         val count = mapper.deleteByPrimaryKey(102)
+        session.commit()
+        println("${count}行のレコードを削除しました")
+    }
+}
+
+fun list5_4_21() {
+    createSessionFactory().openSession().use { session ->
+        val mapper = session.getMapper(UserMapper::class.java)
+        val count = mapper.delete {
+            where(name, isEqualTo("Jiro"))
+        }
         session.commit()
         println("${count}行のレコードを削除しました")
     }
