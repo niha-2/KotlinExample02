@@ -11,9 +11,9 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder
 import org.mybatis.dynamic.sql.SqlBuilder.isEqualTo
 import org.mybatis.dynamic.sql.SqlBuilder.isGreaterThanOrEqualTo
 
-fun main() {
-    list5_4_21()
-}
+//fun main() {
+//    list5_4_21()
+//}
 fun createSessionFactory(): SqlSessionFactory {
     val resource = "mybatis-config.xml"
     val inputStream = Resources.getResourceAsStream(resource)
